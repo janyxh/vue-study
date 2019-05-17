@@ -21,9 +21,6 @@ export default {
     textarea(val) {
       const reg = /[\u4e00-\u9fa5a-zA-Z0-9]/gi
       let arr = val.match(reg)
-      if (arr) {
-        console.log(arr.join(''))
-      }
       if (arr && arr.length > 10) {
         this.textarea = val.slice(0, val.length - 1)
       }
