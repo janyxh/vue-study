@@ -29,6 +29,12 @@ const routes = [
       import(/* webpackChunkName: "about" */ "@/views/Validate.vue")
   },
   {
+    path: "/ValidateFor",
+    name: "ValidateFor",
+    component: () =>
+      import(/* webpackChunkName: "about" */ "@/views/ValidateFor.vue")
+  },
+  {
     path: "/flex",
     name: "flex",
     component: () => import(/* webpackChunkName: "about" */ "@/views/Flex.vue"),

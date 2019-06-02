@@ -1,0 +1,35 @@
+[
+  {
+    "content": "我是要成为海贼王的男人",
+    "ruleForm": {
+      "name": ""
+    },
+    "rules": {
+      "name": [
+        { "required": true, "message": "请输入活动名称", "trigger": "blur" }
+      ]
+    }
+  },
+  {
+    "content": "真的勇士敢于直面惨淡的人生",
+    "ruleForm": {
+      "name": ""
+    },
+    "rules": {
+      "name": [
+        { "required": true, "message": "请输入活动名称", "trigger": "blur" }
+      ]
+    }
+  },
+  {
+    "content": "有志气！",
+    "ruleForm": {
+      "name": ""
+    },
+    "rules": {
+      "name": [
+        { "required": true, "message": "请输入活动名称", "trigger": "blur" }
+      ]
+    }
+  }
+]
