@@ -3,15 +3,29 @@
     <ul>
       <li v-for="(item,index) in dataList" :key="index">
         <p>{{item.content}}</p>
-        <el-form :model="item.ruleForm" :rules="item.rules" ref="ruleForm" :id="`idv${index}`">
+        <el-form :model="item.ruleForm" :rules="item.rules" :ref="`ruleForm${index}`" :id="`idv${index}`">
           <el-form-item label="活动名称" prop="name">
             <el-input type="textarea" v-model="item.ruleForm.name" rows="3"></el-input>
           </el-form-item>
           <el-form-item>
-            <el-button type="primary" @click="submitForm('ruleForm',index)">立即创建</el-button>
-            <el-button @click="resetForm('ruleForm',index)">重置</el-button>
+            <el-button type="primary" @click="submitForm(`ruleForm${index}`,index)">立即创建</el-button>
+            <el-button @click="resetForm(`ruleForm${index}`,index)">重置</el-button>
           </el-form-item>
         </el-form>
+        <ul>
+          <li v-for="(item,index) in replyList" :key="index">
+            <p>{{item.content}}</p>
+            <el-form :model="item.ruleForm2" :rules="item.rules2" :ref="`ruleForm${index}`" :id="`idv${index}`">
+              <el-form-item label="活动名称" prop="name">
+                <el-input type="textarea" v-model="item.ruleForm2.name" rows="3"></el-input>
+              </el-form-item>
+              <el-form-item>
+                <el-button type="primary" @click="submitForm(`ruleForm2${index}`,index)">立即创建</el-button>
+                <el-button @click="resetForm(`ruleForm2${index}`,index)">重置</el-button>
+              </el-form-item>
+            </el-form>
+          </li>
+        </ul>
       </li>
       <!-- <li>
         <el-form :model="ruleForm" :rules="rules" ref="ruleForm">
@@ -36,47 +50,8 @@ import { postData, getData } from '@/api'
 export default {
   data() {
     return {
-      dataList: [
-        // {
-        //   content: '我是要成为海贼王的男人',
-        //   ruleForm: {
-        //     name: ''
-        //   },
-        //   rules: {
-        //     name: [
-        //       { required: true, message: '请输入活动名称', trigger: 'blur' }
-        //     ]
-        //   }
-        // },
-        // {
-        //   content: '真的勇士敢于直面惨淡的人生',
-        //   ruleForm: {
-        //     name: ''
-        //   },
-        //   rules: {
-        //     name: [
-        //       { required: true, message: '请输入活动名称', trigger: 'blur' }
-        //     ]
-        //   }
-        // },
-        // {
-        //   content: '有志气！',
-        //   ruleForm: {
-        //     name: ''
-        //   },
-        //   rules: {
-        //     name: [
-        //       { required: true, message: '请输入活动名称', trigger: 'blur' }
-        //     ]
-        //   }
-        // }
-      ]
-      // ruleForm: {
-      //   name: ''
-      // },
-      // rules: {
-      //   name: [{ required: true, message: '请输入活动名称', trigger: 'blur' }]
-      // }
+      dataList: [],
+      replyList: []
     }
   },
   mounted() {
@@ -93,18 +68,28 @@ export default {
       //     this.dataList = myJson
       //   })
       // console.log('postData',postData)
-      getData('./json/index.json', {})
+      getData('./json/commentList.json', {})
         .then(data => {
-          this.dataList = data
+          data.forEach(element => {
+            element.ruleForm = {
+              name: ''
+            }
+            element.rules = {
+              name: [
+                {
+                  required: true,
+                  message: '请输入活动名称',
+                  trigger: 'blur'
+                }
+              ]
+            }
+          })
+          this.dataList = data;
         }) // JSON from `response.json()` call
         .catch(error => console.error(error))
     },
     submitForm(formName, index) {
-      console.log(formName)
-      console.log('$refs', this.$refs)
-      console.log('form', this.$refs[formName][index])
-
-      this.$refs[formName][index].validate(valid => {
+      this.$refs[formName][0].validate(valid => {
         if (valid) {
           alert('submit!' + index)
         } else {
@@ -114,7 +99,7 @@ export default {
       })
     },
     resetForm(formName, index) {
-      this.$refs[formName][index].resetFields()
+      this.$refs[formName][0].resetFields()
     }
   }
 }

@@ -1,0 +1,47 @@
+[
+    {
+        "content": "海贼+1",
+        "ruleForm": {
+            "name": ""
+        },
+        "rules": {
+            "name": [
+                {
+                    "required": true,
+                    "message": "请输入活动名称",
+                    "trigger": "blur"
+                }
+            ]
+        }
+    },
+    {
+        "content": "海贼+2",
+        "ruleForm": {
+            "name": ""
+        },
+        "rules": {
+            "name": [
+                {
+                    "required": true,
+                    "message": "请输入活动名称",
+                    "trigger": "blur"
+                }
+            ]
+        }
+    },
+    {
+        "content": "海贼+4",
+        "ruleForm": {
+            "name": ""
+        },
+        "rules": {
+            "name": [
+                {
+                    "required": true,
+                    "message": "请输入活动名称",
+                    "trigger": "blur"
+                }
+            ]
+        }
+    }
+]
