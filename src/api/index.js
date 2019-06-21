@@ -22,29 +22,16 @@ export const postData = (url, data) => {
 };
 
 export const getData = (url, data) => {
-  // Default options are marked with *
-  url = url + "?";
+  let getUrl = url;
   let isFirst = true;
-  for (let i in data) {
+  for (let i in params) {
     if (isFirst) {
       isFirst = false;
-      url += `${i}=${data[i]}`;
+      getUrl += `?${i}=${params[i]}`;
     } else {
-      url += `&&${i}=${data[i]}`;
+      getUrl += `&${i}=${params[i]}`;
     }
+    console.log(getUrl);
   }
-
-  return fetch(url, {
-    // body: JSON.stringify(data), // must match 'Content-Type' header
-    cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
-    credentials: "same-origin", // include, same-origin, *omit
-    // headers: {
-    //   'user-agent': 'Mozilla/4.0 MDN Example',
-    //   'content-type': 'application/json'
-    // },
-    method: "GET", // *GET, POST, PUT, DELETE, etc.
-    mode: "cors", // no-cors, cors, *same-origin
-    redirect: "follow", // manual, *follow, error
-    referrer: "no-referrer" // *client, no-referrer
-  }).then(response => response.json()); // parses response to JSON
+  return fetch(base + getUrl).then(response => response.json());
 };
