@@ -86,6 +86,12 @@ const routes = [
         name: "Dice",
         component: () =>
           import(/* webpackChunkName: "about" */ "@/components/Flex/Dice.vue")
+      },
+      {
+        path: "FlexFixed",
+        name: "FlexFixed",
+        component: () =>
+          import(/* webpackChunkName: "about" */ "@/components/Flex/FlexFixed.vue")
       }
     ]
   },
