@@ -1,8 +1,8 @@
 // vue.config.js
-const path = require("path");
-const webpack = require("webpack");
-const dllPath = "./public/vendor/";
-const { library } = require("./dll.config.js");
+// const path = require("path");
+// const webpack = require("webpack");
+// const dllPath = "./public/vendor/";
+// const { library } = require("./dll.config.js");
 
 module.exports = {
   productionSourceMap: false,
@@ -32,19 +32,19 @@ module.exports = {
       // }
     },
     modules: false
-  },
-  configureWebpack: config => {
-    if (process.env.NODE_ENV === "production") {
-      // 为生产环境修改配置...
-      let pluginsPro = [
-        ...Object.keys(library).map(name => {
-          return new webpack.DllReferencePlugin({
-            context: ".",
-            manifest: path.join(dllPath, `${name}-manifest.json`)
-          });
-        })
-      ];
-      config.plugins = config.plugins.concat(pluginsPro);
-    }
   }
+  //   configureWebpack: config => {
+  //     if (process.env.NODE_ENV === "production") {
+  //       // 为生产环境修改配置...
+  //       let pluginsPro = [
+  //         ...Object.keys(library).map(name => {
+  //           return new webpack.DllReferencePlugin({
+  //             context: ".",
+  //             manifest: path.join(dllPath, `${name}-manifest.json`)
+  //           });
+  //         })
+  //       ];
+  //       config.plugins = config.plugins.concat(pluginsPro);
+  //     }
+  //   }
 };
