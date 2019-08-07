@@ -99,6 +99,12 @@ const routes = [
     path: "/slice",
     name: "slice",
     component: () => import(/* webpackChunkName: "about" */ "@/views/Slice.vue")
+  },
+  {
+    path: "/aguments",
+    name: "aguments",
+    component: () =>
+      import(/* webpackChunkName: "about" */ "@/views/Aguments.vue")
   }
 ];
 export default routes;
