@@ -105,6 +105,12 @@ const routes = [
     name: "aguments",
     component: () =>
       import(/* webpackChunkName: "about" */ "@/views/Aguments.vue")
+  },
+  {
+    path: "/switch",
+    name: "switch",
+    component: () =>
+      import(/* webpackChunkName: "about" */ "@/views/Switch.vue")
   }
 ];
 export default routes;
